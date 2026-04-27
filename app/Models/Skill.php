@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Filament\Forms\Components\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
