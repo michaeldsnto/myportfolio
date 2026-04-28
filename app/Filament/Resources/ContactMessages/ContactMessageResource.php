@@ -9,16 +9,21 @@ use App\Filament\Resources\ContactMessages\Schemas\ContactMessageForm;
 use App\Filament\Resources\ContactMessages\Tables\ContactMessagesTable;
 use App\Models\ContactMessage;
 use BackedEnum;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ViewAction;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ContactMessageResource extends Resource
 {
     protected static ?string $model = ContactMessage::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChatBubbleLeftRight;
 
     protected static ?string $recordTitleAttribute = 'Generate COntactMessage';
 
@@ -29,7 +34,21 @@ class ContactMessageResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return ContactMessagesTable::configure($table);
+        return $table
+            ->columns([
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('email'),
+                TextColumn::make('subject')->limit(30),
+                IconColumn::make('is_read')->boolean(),
+                TextColumn::make('created_at')->since(),
+            ])
+            ->actions([
+                ViewAction::make(),
+                DeleteAction::make(),
+            ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array
@@ -47,4 +66,5 @@ class ContactMessageResource extends Resource
             'edit' => EditContactMessage::route('/{record}/edit'),
         ];
     }
+
 }

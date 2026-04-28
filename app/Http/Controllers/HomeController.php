@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ResumeFile;
 use App\Services\ProjectService;
 use App\Models\Skill;
 use App\Models\Experience;
@@ -29,11 +30,17 @@ class HomeController extends Controller
 
         $siteSetting = SiteSetting::query()->first();
 
+        $activeResume = ResumeFile::query()
+        ->where('is_active', true)
+        ->latest()
+        ->first();
+
         return view('pages.home', compact(
             'featuredProjects',
             'featuredSkills',
             'experiences',
-            'siteSetting'
+            'siteSetting',
+            'activeResume'
         ));
     }
 }

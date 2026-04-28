@@ -37,7 +37,7 @@
             <div class="flex justify-center">
                 <div class="w-[380px] h-[480px] rounded-3xl overflow-hidden border border-white/10">
                     <img
-                        src="{{ asset('images/profile.jpg') }}"
+                        src="{{ $siteSetting->getProfilePhotoUrlAttribute() }}"
                         alt="Profile"
                         class="w-full h-full object-cover"
                     >

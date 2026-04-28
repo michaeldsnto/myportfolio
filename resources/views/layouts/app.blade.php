@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $siteSetting->site_title ?? 'DevPortfolio Pro' }}</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <meta name="description" content="Professional Laravel Developer Portfolio">

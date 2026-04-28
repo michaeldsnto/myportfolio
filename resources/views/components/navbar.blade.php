@@ -17,8 +17,8 @@
                     Projects
                 </a>
 
-                <a href="#experience" class="text-sm text-zinc-400 hover:text-white transition">
-                    Experience
+                <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition">
+                    Contact
                 </a>
 
                 <a href="#contact"

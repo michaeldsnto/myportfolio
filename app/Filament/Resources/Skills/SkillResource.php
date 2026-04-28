@@ -27,7 +27,7 @@ class SkillResource extends Resource
 {
     protected static ?string $model = Skill::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSparkles;
 
     protected static ?string $recordTitleAttribute = 'Generate skill';
 
@@ -70,8 +70,24 @@ class SkillResource extends Resource
                                 'advanced' => 'Advanced',
                             ]),
 
-                        TextInput::make('icon')
-                            ->maxLength(255),
+                        Select::make('icon')
+                            ->label('Skill Icon')
+                            ->options([
+                                'php' => 'PHP',
+                                'laravel' => 'Laravel',
+                                'mysql' => 'MySQL',
+                                'api' => 'API',
+                                'git' => 'Git',
+                                'github' => 'GitHub',
+                                'javascript' => 'JavaScript',
+                                'tailwindcss' => 'Tailwind CSS',
+                                'alpinejs' => 'Alpine.js',
+                                'docker' => 'Docker',
+                                'linux' => 'Linux',
+                                'redis' => 'Redis',
+                            ])
+                            ->searchable()
+                            ->required(),
 
                         Toggle::make('is_featured')
                             ->default(false),
