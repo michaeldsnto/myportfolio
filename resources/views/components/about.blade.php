@@ -1,4 +1,4 @@
-<div id="about" class="scroll-mt-32">
+<div id="about" class="scroll-mt-32" data-aos="fade-up" data-aos-delay="100">
 
     <p class="text-sm uppercase tracking-[0.2em] text-zinc-500 mb-4">
         About Me

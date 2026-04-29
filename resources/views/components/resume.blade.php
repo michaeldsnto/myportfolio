@@ -1,4 +1,4 @@
-<section class="py-28">
+<section class="py-28" data-aos="fade-up" data-aos-delay="400">
     <div class="max-w-4xl mx-auto px-6 text-center">
 
         <h2 class="text-4xl font-bold mb-6">
@@ -11,10 +11,8 @@
         </p>
 
         @if($activeResume)
-            <a href="{{ asset('storage/resume/' . $activeResume->file_path) }}"
-               target="_blank"
-               download
-               class="px-8 py-4 bg-white text-black rounded-full font-medium hover:opacity-90 transition">
+            <a href="{{ asset('storage/resume/' . $activeResume->file_path) }}" target="_blank" download
+                class="px-8 py-4 bg-white text-black rounded-full font-medium hover:opacity-90 transition">
                 Download Resume
             </a>
         @else

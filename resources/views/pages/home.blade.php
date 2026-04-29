@@ -2,7 +2,9 @@
 
 @section('content')
 
-    @include('components.hero')
+    <div class="reveal reveal-delay-1">
+        @include('components.hero')
+    </div>
 
     <section class="py-28">
         <div class="max-w-7xl mx-auto px-6 md:px-12">
@@ -12,17 +14,19 @@
                 {{-- LEFT COLUMN --}}
                 <div class="space-y-20">
 
-                    @include('components.about')
+                    <div class="reveal reveal-delay-2">
+                        @include('components.about')
+                    </div>
 
-                    @include('components.skills')
+                    <div class="reveal reveal-delay-3">
+                        @include('components.skills')
+                    </div>
 
                 </div>
 
                 {{-- RIGHT COLUMN --}}
-                <div>
-
+                <div class="reveal reveal-delay-4">
                     @include('components.experience')
-
                 </div>
 
             </div>
@@ -30,12 +34,16 @@
         </div>
     </section>
 
-    @include('components.projects')
+    <div class="reveal reveal-delay-2">
+        @include('components.projects')
+    </div>
 
-    @include('components.contact-cta')
+    <div class="reveal reveal-delay-3">
+        @include('components.contact-cta')
+    </div>
 
-    @include('components.resume')
-
-    
+    <div class="reveal reveal-delay-4">
+        @include('components.resume')
+    </div>
 
 @endsection
