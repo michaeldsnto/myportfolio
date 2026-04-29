@@ -11,6 +11,9 @@ Route::get('/', [HomeController::class, 'index'])
 
 Route::get('/projects', [ProjectController::class, 'index'])
     ->name('projects.index');
+    
+Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])
+    ->name('projects.show');
 
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])
     ->name('projects.show');

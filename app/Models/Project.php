@@ -16,7 +16,7 @@ class Project extends Model
         'slug',
         'short_description',
         'full_description',
-        'proble_statement',
+        'problem_statement',
         'solution',
         'result',
         'tech_stack',

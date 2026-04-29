@@ -3,28 +3,35 @@
 
         <div class="h-20 flex items-center justify-between">
 
+            {{-- Logo --}}
             <a href="{{ route('home') }}"
                class="text-xl font-bold tracking-tight">
-                Michael Angelius Desanto
+                M<span class="text-zinc-500">.</span>Dev
             </a>
 
+            {{-- Desktop Navigation --}}
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#about" class="text-sm text-zinc-400 hover:text-white transition">
+
+                <a href="{{ route('home') }}#about"
+                   class="text-sm text-zinc-400 hover:text-white transition">
                     About
                 </a>
 
-                <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition">
+                <a href="{{ route('home') }}#projects"
+                   class="text-sm text-zinc-400 hover:text-white transition">
                     Projects
                 </a>
 
-                <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition">
+                <a href="{{ route('home') }}#contact"
+                   class="text-sm text-zinc-400 hover:text-white transition">
                     Contact
                 </a>
 
-                <a href="#contact"
+                <a href="{{ route('home') }}#contact"
                    class="px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:opacity-90 transition">
                     Hire Me
                 </a>
+
             </nav>
 
         </div>
