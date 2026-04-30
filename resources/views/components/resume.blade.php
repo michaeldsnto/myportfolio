@@ -1,4 +1,4 @@
-<section class="py-28" data-aos="fade-up" data-aos-delay="400">
+<section class="py-28">
     <div class="max-w-4xl mx-auto px-6 text-center">
 
         <h2 class="text-4xl font-bold mb-6">

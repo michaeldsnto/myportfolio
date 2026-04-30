@@ -1,4 +1,4 @@
-<section class="min-h-screen flex items-center pt-24" data-aos="fade-up">
+<section class="min-h-screen flex items-center pt-24">
     <div class="max-w-7xl mx-auto px-6 md:px-12 w-full">
 
         <div class="grid md:grid-cols-2 gap-12 items-center">

@@ -1,4 +1,4 @@
-<section id="projects" class="py-28" data-aos="fade-up" data-aos-delay="200">
+<section id="projects" class="py-28">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
 
         <div class="flex items-center justify-between mb-12">

@@ -1,4 +1,4 @@
-<div data-aos="fade-up" data-aos-delay="300">
+<div>
 
     <p class="text-sm uppercase tracking-[0.2em] text-zinc-500 mb-4">
         Expertise

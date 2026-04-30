@@ -12,9 +12,6 @@
         "Noto Color Emoji";
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
 .reveal {
     opacity: 1;
