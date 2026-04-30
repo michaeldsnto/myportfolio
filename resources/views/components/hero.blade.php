@@ -5,7 +5,7 @@
 
             <div>
                 <p class="text-sm uppercase tracking-[0.2em] text-zinc-400 mb-4">
-                    Laravel Developer • Problem Solver
+                    {{$siteSetting->hero_subtitle}}
                 </p>
 
                 <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
@@ -16,9 +16,7 @@
                 </h1>
 
                 <p class="text-zinc-400 text-lg leading-relaxed max-w-xl mb-8">
-                    I build scalable Laravel applications with clean architecture,
-                    professional admin systems, and production-ready solutions
-                    for real business needs.
+                    {{$siteSetting->hero_description}}
                 </p>
 
                 <div class="flex flex-wrap gap-4">

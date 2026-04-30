@@ -5,18 +5,11 @@
     </p>
 
     <h2 class="text-4xl font-bold mb-8 leading-tight">
-        I build reliable systems,
-        not temporary solutions.
+        Michael Angelius Desanto
     </h2>
 
     <p class="text-zinc-400 leading-relaxed text-lg">
-        I focus on Laravel development, clean architecture,
-        admin systems, business workflows, and production-ready
-        applications that solve real operational problems.
-
-        My goal is not only to write code,
-        but to create systems that are scalable,
-        maintainable, and valuable.
+        {{ $siteSetting->about_description }}
     </p>
 
 </div>
