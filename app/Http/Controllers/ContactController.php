@@ -9,7 +9,8 @@ class ContactController extends Controller
 {
     public function __construct(
         protected ContactService $contactService
-    ) {}
+    ) {
+    }
 
     public function index()
     {
@@ -22,9 +23,8 @@ class ContactController extends Controller
             $request->validated()
         );
 
-        return back()->with(
-            'success',
-            'Your message has been sent successfully.'
-        );
+        return redirect()->back()
+            ->withFragment('contact')
+            ->with('success', 'Message sent successfully.');
     }
 }

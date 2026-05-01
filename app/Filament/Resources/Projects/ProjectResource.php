@@ -65,17 +65,17 @@ class ProjectResource extends Resource
                             ->rows(3)
                             ->maxLength(500),
 
-                        Textarea::make('full_description')
+                        RichEditor::make('full_description')
                             ->required()
                             ->columnSpanFull(),
 
-                        TextArea::make('problem_statement')
+                        RichEditor::make('problem_statement')
                             ->columnSpanFull(),
 
-                        Textarea::make('solution')
+                        RichEditor::make('solution')
                             ->columnSpanFull(),
 
-                        Textarea::make('result')
+                        RichEditor::make('result')
                             ->columnSpanFull(),
 
                         Textarea::make('tech_stack')

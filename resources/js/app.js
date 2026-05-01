@@ -1,29 +1,15 @@
 import './bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-document.addEventListener("DOMContentLoaded", () => {
-    const reveals = document.querySelectorAll(".reveal");
-
-    if (!reveals.length) return;
-
-    reveals.forEach((element) => {
-        element.classList.add("hidden-reveal");
+function initAOS() {
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 80,
     });
+}
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                    entry.target.classList.remove("hidden-reveal");
-                }
-            });
-        },
-        {
-            threshold: 0.15,
-        }
-    );
-
-    reveals.forEach((element) => {
-        observer.observe(element);
-    });
-});
+document.addEventListener('DOMContentLoaded', initAOS);
+window.addEventListener('load', initAOS);

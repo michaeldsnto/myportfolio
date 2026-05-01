@@ -1,17 +1,30 @@
-<section>
-    <div id="experience">
+<section class="py-28">
+    <div id="experience" class="scroll-mt-32 max-w-4xl">
 
-        <p class=" text-sm uppercase tracking-[0.2em] text-zinc-500 mb-4">
+        {{-- Header --}}
+        <p 
+            data-aos="fade-up"
+            class="text-sm uppercase tracking-[0.2em] text-zinc-500 mb-4"
+        >
             Experience
         </p>
 
-        <h2 class="text-4xl font-bold mb-12">
+        <h2 
+            data-aos="fade-up"
+            data-aos-delay="100"
+            class="text-4xl font-bold mb-12"
+        >
             Professional Journey
         </h2>
 
+        {{-- Timeline --}}
         <div class="space-y-10">
-            @foreach($experiences as $experience)
-                <div class="border-l border-white/10 pl-8 pb-8">
+            @foreach($experiences as $index => $experience)
+                <div 
+                    data-aos="fade-up"
+                    data-aos-delay="{{ $index * 100 }}"
+                    class="border-l border-white/10 pl-8 pb-8"
+                >
 
                     <h3 class="text-xl font-semibold">
                         {{ $experience->title }}
