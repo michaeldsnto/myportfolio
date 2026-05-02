@@ -14,7 +14,9 @@ class ContactController extends Controller
 
     public function index()
     {
-        return view('pages.contact');
+        return redirect()
+            ->route('home')
+            ->withFragment('contact');
     }
 
     public function store(ContactRequest $request)

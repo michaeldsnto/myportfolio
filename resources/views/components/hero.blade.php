@@ -20,10 +20,7 @@
                     data-aos-delay="100"
                     class="text-5xl md:text-7xl font-bold leading-tight mb-6"
                 >
-                    Building clean systems,
-                    <span class="text-zinc-400">
-                        not just websites.
-                    </span>
+                    {{ $siteSetting->hero_title ?: 'Building clean systems, not just websites.' }}
                 </h1>
 
                 {{-- Description --}}

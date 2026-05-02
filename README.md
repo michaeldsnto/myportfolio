@@ -1,59 +1,147 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MyPortfolio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Professional portfolio website built with Laravel 12, Filament, Tailwind CSS, and Vite.  
+The project combines a public-facing portfolio with a Filament admin panel for managing projects, skills, experience, resume files, SEO settings, and contact messages.
 
-## About Laravel
+## Highlights
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Public landing page with hero, about, skills, experience, featured projects, resume CTA, and contact section
+- Project listing and case study detail pages
+- Filament admin panel at `/admin`
+- Contact form with validation, honeypot spam protection, persistence, and email notification
+- Centralized site settings and SEO settings
+- Feature tests for public pages and contact flow
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.2+
+- Laravel 12
+- Filament 5
+- Tailwind CSS 4
+- Vite 7
+- SQLite for tests, MySQL/MariaDB recommended for local and production
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Set your database in `.env`, then run:
 
-## Laravel Sponsors
+```bash
+php artisan migrate
+php artisan storage:link
+npm install
+npm run build
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+For local development:
 
-### Premium Partners
+```bash
+composer run dev
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+That command runs:
 
-## Contributing
+- Laravel development server
+- queue listener
+- log watcher
+- Vite dev server
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Required Configuration
 
-## Code of Conduct
+At minimum, review these values in `.env`:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```env
+APP_NAME="MyPortfolio"
+APP_URL=http://localhost:8000
 
-## Security Vulnerabilities
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=myportfolio
+DB_USERNAME=root
+DB_PASSWORD=
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+MAIL_MAILER=log
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+MAIL_CONTACT_ADDRESS="hello@example.com"
+```
 
-## License
+`MAIL_CONTACT_ADDRESS` is the inbox that receives portfolio contact form notifications.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Admin Panel
+
+Open:
+
+```text
+/admin
+```
+
+Create an admin user if needed:
+
+```bash
+php artisan make:filament-user
+```
+
+Use the admin panel to manage:
+
+- site settings
+- SEO settings
+- projects
+- skills
+- experiences
+- resume files
+- contact messages
+
+## Testing
+
+Run:
+
+```bash
+php artisan test
+```
+
+Current test coverage includes:
+
+- home page rendering
+- project detail page access and unique view counting
+- contact form redirect
+- contact form submission and notification
+- honeypot rejection
+
+## Production Notes
+
+- Use MySQL or MariaDB in production
+- Configure a real mail transport instead of `log`
+- Run a queue worker if you later move email sending back to queued jobs
+- Set `APP_URL` correctly for canonical and social meta tags
+- Upload real favicon, OG image, profile photo, resume file, and project media from admin
+
+## What Was Improved
+
+- Removed duplicate project detail route
+- Fixed broken contact flow between form and backend validation
+- Added missing mail notification class and email template
+- Added configurable contact notification recipient
+- Added safe global site/SEO data handling for all pages
+- Improved project page SEO metadata
+- Fixed test portability by making the MySQL-specific enum migration safe for SQLite tests
+- Replaced default Laravel README with project-specific documentation
+
+## Remaining Gaps
+
+The codebase is now materially cleaner, but these are still worth improving next:
+
+- add seeders for demo-ready portfolio content
+- add image fallbacks in `public/images` to match current accessor defaults
+- add browser-level UI checks for responsive layout and visual regressions
+- add rate-limit/log monitoring for high-volume contact spam scenarios

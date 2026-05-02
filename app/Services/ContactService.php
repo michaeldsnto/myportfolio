@@ -22,7 +22,14 @@ class ContactService
 
     protected function sendNotification(ContactMessage $message): void
     {
-        Mail::to(config('mail.from.address'))
-            ->queue(new ContactNotificationMail($message));
+        $recipient = config('mail.contact.address', config('mail.from.address'));
+
+        if (blank($recipient)) {
+            return;
+        }
+
+        Mail::to($recipient)->send(
+            new ContactNotificationMail($message)
+        );
     }
 }

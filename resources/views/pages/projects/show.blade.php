@@ -1,122 +1,110 @@
 @extends('layouts.app')
 
+@section('meta_title', $project->title . ' | ' . ($siteSetting->site_title ?: 'Laravel Developer Portfolio'))
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($project->short_description ?: $project->full_description), 160))
+@section('canonical_url', route('projects.show', $project->slug))
+@section('og_image', $project->featured_image ? asset('storage/' . $project->featured_image) : $seoSetting->og_image_url)
+
 @section('content')
+<section class="pt-40 pb-24">
+    <div class="mx-auto max-w-5xl px-6 md:px-12">
+        <div class="mb-16">
+            <p data-aos="fade-up" class="mb-4 text-sm uppercase tracking-[0.2em] text-zinc-500">
+                Case Study
+            </p>
 
-    <section class="pt-40 pb-24">
-        <div class="max-w-5xl mx-auto px-6 md:px-12">
+            <h1 data-aos="fade-up" data-aos-delay="100" class="mb-6 text-5xl font-bold">
+                {{ $project->title }}
+            </h1>
 
-            {{-- Header --}}
-            <div class="mb-16">
-
-                <p data-aos="fade-up" class="text-sm uppercase tracking-[0.2em] text-zinc-500 mb-4">
-                    Case Study
-                </p>
-
-                <h1 data-aos="fade-up" data-aos-delay="100" class="text-5xl font-bold mb-6">
-                    {{ $project->title }}
-                </h1>
-
-                <div class="text-zinc-400 leading-relaxed space-y-4 whitespace-pre-line">
-                    {!! $project->full_description !!}
-                </div>
-
+            <div class="space-y-4 whitespace-pre-line leading-relaxed text-zinc-400">
+                {!! $project->full_description !!}
             </div>
+        </div>
 
-            {{-- Featured Image --}}
-            @if($project->featured_image)
-                <div data-aos="zoom-in" class="mb-20 rounded-3xl overflow-hidden border border-white/5">
-                    <img src="{{ asset('storage/' . $project->featured_image) }}" alt="{{ $project->title }}" loading="lazy"
-                        class="w-full object-cover">
-                </div>
-            @endif
+        @if($project->featured_image)
+            <div data-aos="zoom-in" class="mb-20 overflow-hidden rounded-3xl border border-white/5">
+                <img
+                    src="{{ asset('storage/' . $project->featured_image) }}"
+                    alt="{{ $project->title }}"
+                    loading="lazy"
+                    class="w-full object-cover"
+                >
+            </div>
+        @endif
 
-            {{-- Content Sections --}}
-            <div class="space-y-16">
-
-                {{-- Problem --}}
+        <div class="space-y-16">
+            @if($project->problem_statement)
                 <div data-aos="fade-up">
-                    <h2 class="text-2xl font-semibold mb-4">
-                        Problem
-                    </h2>
-
-                    <div class="text-zinc-400 leading-relaxed space-y-4 whitespace-pre-line">
+                    <h2 class="mb-4 text-2xl font-semibold">Problem</h2>
+                    <div class="space-y-4 whitespace-pre-line leading-relaxed text-zinc-400">
                         {!! $project->problem_statement !!}
                     </div>
                 </div>
+            @endif
 
-                {{-- Solution --}}
+            @if($project->solution)
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="text-2xl font-semibold mb-4">
-                        Solution
-                    </h2>
-
-                    <div class="text-zinc-400 leading-relaxed space-y-4 whitespace-pre-line">
+                    <h2 class="mb-4 text-2xl font-semibold">Solution</h2>
+                    <div class="space-y-4 whitespace-pre-line leading-relaxed text-zinc-400">
                         {!! $project->solution !!}
                     </div>
                 </div>
+            @endif
 
+            @if($project->result)
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="text-2xl font-semibold mb-4">
-                        Result
-                    </h2>
-
-                    <div class="text-zinc-400 leading-relaxed space-y-4 whitespace-pre-line">
+                    <h2 class="mb-4 text-2xl font-semibold">Result</h2>
+                    <div class="space-y-4 whitespace-pre-line leading-relaxed text-zinc-400">
                         {!! $project->result !!}
                     </div>
                 </div>
+            @endif
 
-                {{-- Tech Stack --}}
+            @if($project->tech_stack)
                 <div data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="text-2xl font-semibold mb-6">
-                        Tech Stack
-                    </h2>
-
+                    <h2 class="mb-6 text-2xl font-semibold">Tech Stack</h2>
                     <div class="flex flex-wrap gap-3">
-                        @foreach(explode(',', $project->tech_stack) as $tech)
-                            <span class="px-4 py-2 text-sm rounded-full border border-white/10 text-zinc-300">
-                                {{ trim($tech) }}
+                        @foreach(array_filter(array_map('trim', explode(',', $project->tech_stack))) as $tech)
+                            <span class="rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-300">
+                                {{ $tech }}
                             </span>
                         @endforeach
                     </div>
                 </div>
-
-            </div>
-
-            {{-- Links --}}
-            <div data-aos="fade-up" data-aos-delay="400" class="mt-20 flex flex-wrap gap-4">
-
-                @if($project->github_url)
-                    <a href="{{ $project->github_url }}" target="_blank"
-                        class="px-6 py-3 border border-white/10 rounded-full hover:border-white/20 transition">
-                        GitHub Repository
-                    </a>
-                @endif
-
-                @if($project->project_url)
-                    <a href="{{ $project->project_url }}" target="_blank"
-                        class="px-6 py-3 bg-white text-black rounded-full hover:opacity-90 transition">
-                        Live Demo
-                    </a>
-                @endif
-
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="500" class="mt-24 text-center">
-                <h3 class="text-2xl font-semibold mb-4">
-                    Interested in similar work?
-                </h3>
-
-                <p class="text-zinc-400 mb-6">
-                    I'm available for freelance and full-time opportunities.
-                </p>
-
-                <a href="{{ route('home') }}#contact"
-                    class="px-8 py-4 bg-white text-black rounded-full font-medium hover:opacity-90 transition">
-                    Contact Me
-                </a>
-            </div>
-
+            @endif
         </div>
-    </section>
 
+        <div data-aos="fade-up" data-aos-delay="400" class="mt-20 flex flex-wrap gap-4">
+            @if($project->github_url)
+                <a href="{{ $project->github_url }}" target="_blank" rel="noreferrer"
+                   class="rounded-full border border-white/10 px-6 py-3 transition hover:border-white/20">
+                    GitHub Repository
+                </a>
+            @endif
+
+            @if($project->project_url)
+                <a href="{{ $project->project_url }}" target="_blank" rel="noreferrer"
+                   class="rounded-full bg-white px-6 py-3 text-black transition hover:opacity-90">
+                    Live Demo
+                </a>
+            @endif
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="500" class="mt-24 text-center">
+            <h3 class="mb-4 text-2xl font-semibold">
+                Interested in similar work?
+            </h3>
+
+            <p class="mb-6 text-zinc-400">
+                I'm available for freelance and full-time opportunities.
+            </p>
+
+            <a href="{{ route('home') }}#contact"
+               class="rounded-full bg-white px-8 py-4 font-medium text-black transition hover:opacity-90">
+                Contact Me
+            </a>
+        </div>
+    </div>
+</section>
 @endsection

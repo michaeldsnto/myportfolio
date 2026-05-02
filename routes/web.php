@@ -15,9 +15,6 @@ Route::get('/projects', [ProjectController::class, 'index'])
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])
     ->name('projects.show');
 
-Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])
-    ->name('projects.show');
-
 Route::get('/contact', [ContactController::class, 'index'])
     ->name('contact.index');
 
