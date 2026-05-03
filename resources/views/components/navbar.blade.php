@@ -6,7 +6,7 @@
             {{-- Logo --}}
             <a href="{{ route('home') }}"
                class="text-xl font-bold tracking-tight">
-                M<span class="text-zinc-500">.</span>Dev
+                Michael Angelius Desanto
             </a>
 
             {{-- Desktop Navigation --}}

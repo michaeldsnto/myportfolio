@@ -95,8 +95,7 @@ class ProjectResource extends Resource
                         FileUpload::make('featured_image')
                             ->image()
                             ->directory('projects')
-                            ->disk('public')
-                            ->imageEditor(),
+                            ->disk('public'),
 
                         Select::make('status')
                             ->required()
